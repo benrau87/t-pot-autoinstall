@@ -23,8 +23,10 @@ tput setaf $myWHT
 fuRANDOMWORD () {
   local myWORDFILE=/usr/share/dict/names
   local myLINES=$(cat $myWORDFILE  | wc -l)
-  local myRANDOM=$((RANDOM % $myLINES))
-  local myNUM=$((myRANDOM * myRANDOM % $myLINES + 1))
+ # local myRANDOM=$((RANDOM % $myLINES))
+  local myRANDOM=$((RANDOM % 3))
+ # local myNUM=$((myRANDOM * myRANDOM % $myLINES + 1))
+ local myNUM=$((myRANDOM * myRANDOM % 3 + 1))
   echo -n $(sed -n "$myNUM p" $myWORDFILE | tr -d \' | tr A-Z a-z)
 }
 
