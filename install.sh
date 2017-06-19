@@ -20,15 +20,15 @@ tput setaf $myWHT
 }
 
 # used for hostname
-fuRANDOMWORD () {
-  local myWORDFILE=/usr/share/dict/names
-  local myLINES=$(cat $myWORDFILE  | wc -l)
+#fuRANDOMWORD () {
+#  local myWORDFILE=/usr/share/dict/names
+#  local myLINES=$(cat $myWORDFILE  | wc -l)
  # local myRANDOM=$((RANDOM % $myLINES))
-  local myRANDOM=$((RANDOM % 3))
+ # local myRANDOM=$((RANDOM % 3))
  # local myNUM=$((myRANDOM * myRANDOM % $myLINES + 1))
- local myNUM=$((myRANDOM * myRANDOM % 3 + 1))
-  echo -n $(sed -n "$myNUM p" $myWORDFILE | tr -d \' | tr A-Z a-z)
-}
+ #local myNUM=$((myRANDOM * myRANDOM % 3 + 1))
+ # echo -n $(sed -n "$myNUM p" $myWORDFILE | tr -d \' | tr A-Z a-z)
+#}
 
 
 fuECHO ""
@@ -257,7 +257,8 @@ fuECHO "### Setting a new hostname."
 myHOST=$(curl -s -f www.nsanamegenerator.com | html2text | tr A-Z a-z | awk '{print $1}')
 if [ "$myHOST" = "" ]; then
   fuECHO "### Failed to fetch name from remote, using local cache."
-  myHOST=$(fuRANDOMWORD)
+  #myHOST=$(fuRANDOMWORD)
+  myHOST=sweetness
 fi
 hostnamectl set-hostname $myHOST
 sed -i 's#127.0.1.1.*#127.0.1.1\t'"$myHOST"'#g' /etc/hosts
