@@ -69,11 +69,11 @@ if [[ ! $sshstatus =~ "active (running)" ]];
 fi
 
 # check for available, non-empty SSH key
-if ! fgrep -qs ssh /home/$myuser/.ssh/authorized_keys
-    then
-        fuECHO "### No SSH key for user '$myuser' found in /home/$myuser/.ssh/authorized_keys.\n ### Script will abort!"
-        exit 1
-fi
+#if ! fgrep -qs ssh /home/$myuser/.ssh/authorized_keys
+#    then
+#        fuECHO "### No SSH key for user '$myuser' found in /home/$myuser/.ssh/authorized_keys.\n ### Script will abort!"
+#        exit 1
+#fi
 
 # check for default SSH port
 sshport=$(fgrep Port /etc/ssh/sshd_config|cut -d ' ' -f2)
